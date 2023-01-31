@@ -49,13 +49,13 @@ export const LeftSidebar = () => {
             <span className="mr-5">Lainnya</span>
           </Button>
           <Flex className="w-full mt-4 h-14 flex-coltext-center justify-center">
-            <Button className="rounded-full bg-[#00acee] w-full font-bold text-white">
+            <Button className="rounded-full bg-twitterblue w-full font-bold text-white">
               Tweet
             </Button>
           </Flex>
         </Box>
         <Flex className="h-1/4 w-full flex-col">
-          <Flex className="text-white mt-auto px-6 mb-10 gap-3">
+          <Flex className="text-white mt-auto px-6 mb-6 gap-3">
             <Image
               src={default_profile}
               alt="Default Profile"
