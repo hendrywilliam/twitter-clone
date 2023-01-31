@@ -15,9 +15,7 @@ export default function Home() {
         <div className="w-1/3">
           <p>Ngab</p>
         </div>
-        <RightSidebar>
-          <p>Iloveyou too</p>
-        </RightSidebar>
+        <RightSidebar />
       </MainLayout>
     </>
   );
