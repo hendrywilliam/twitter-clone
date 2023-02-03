@@ -1,52 +1,60 @@
 import React from "react";
 import { Box, Input, Button, Flex, Text, Link } from "@chakra-ui/react";
 
-export const RightSidebar = () => {
-  const trendingDatas = [
-    {
-      id: 1,
-      topic: "Sports",
-      status: "Trending",
-      title: "Cristiano Ronaldo",
-      tweetCount: "20K Tweets",
-    },
-    {
-      id: 2,
-      topic: "Only in Twitter",
-      status: "Trending",
-      title: "iShowSpeed",
-      tweetCount: "5.489 Tweets",
-    },
-    {
-      id: 3,
-      topic: "Actor",
-      status: "Trending",
-      title: "Hendri William",
-      tweetCount: "69K Tweets",
-    },
-    {
-      id: 4,
-      topic: "Movies & TV",
-      status: "Trending",
-      title: "Spiderman: No Way Home",
-      tweetCount: "12K Tweet",
-    },
-    {
-      id: 5,
-      topic: "Movies & TV",
-      status: "Trending",
-      title: "Transformers",
-      tweetCount: "92K Tweet",
-    },
-    {
-      id: 6,
-      topic: "Education",
-      status: "Trending",
-      title: "Alterra Academy",
-      tweetCount: "20K Tweet",
-    },
-  ];
+interface TrendingItem {
+  id: number;
+  topic: string;
+  status: string;
+  title: string;
+  tweetCount: string;
+}
 
+const TRENDING_DATAS: Array<TrendingItem> = [
+  {
+    id: 1,
+    topic: "Sports",
+    status: "Trending",
+    title: "Cristiano Ronaldo",
+    tweetCount: "20K Tweets",
+  },
+  {
+    id: 2,
+    topic: "Only in Twitter",
+    status: "Trending",
+    title: "iShowSpeed",
+    tweetCount: "5.489 Tweets",
+  },
+  {
+    id: 3,
+    topic: "Actor",
+    status: "Trending",
+    title: "Hendri William",
+    tweetCount: "69K Tweets",
+  },
+  {
+    id: 4,
+    topic: "Movies & TV",
+    status: "Trending",
+    title: "Spiderman: No Way Home",
+    tweetCount: "12K Tweet",
+  },
+  {
+    id: 5,
+    topic: "Movies & TV",
+    status: "Trending",
+    title: "Transformers",
+    tweetCount: "92K Tweet",
+  },
+  {
+    id: 6,
+    topic: "Education",
+    status: "Trending",
+    title: "Alterra Academy",
+    tweetCount: "20K Tweet",
+  },
+];
+
+export const RightSidebar = () => {
   return (
     <Box className="sticky w-1/3 h-screen top-0 border-l border-neutral-600">
       <Box className="w-1/2 h-max mx-6">
@@ -58,7 +66,7 @@ export const RightSidebar = () => {
       <Box className="w-1/2 h-max mx-6 bg-[#14171A] my-5 rounded-xl text-white">
         <Text className="text-xl p-4 font-bold">Trends for you</Text>
         <Flex className="flex-col">
-          {trendingDatas.map((data) => {
+          {TRENDING_DATAS.map((data) => {
             return (
               <Button
                 key={data.id}
