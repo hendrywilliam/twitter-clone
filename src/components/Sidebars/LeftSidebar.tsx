@@ -56,17 +56,19 @@ export const LeftSidebar = () => {
           </Flex>
         </Box>
         <Flex className="h-1/4 w-full flex-col">
-          <Flex className="text-white mt-auto px-6 mb-6 gap-3">
-            <Image
-              src={default_profile}
-              alt="Default Profile"
-              width={50}
-              className="rounded-full "
-            />
-            <Flex className="flex-col">
-              <p className="font-bold">Hendri William</p>
-              <p className="text-gray-400">@hendrywilliam</p>
-            </Flex>
+          <Flex className="text-white mt-auto px-6 mb-2 gap-3 w-max">
+            <Button className="flex gap-2 p-2 rounded-full hover:bg-neutral-800">
+              <Image
+                src={default_profile}
+                alt="Default Profile"
+                width={50}
+                className="rounded-full "
+              />
+              <Flex className="flex-col pr-2">
+                <p className="font-bold">Hendri William</p>
+                <p className="text-gray-400">@hendrywilliam</p>
+              </Flex>
+            </Button>
           </Flex>
         </Flex>
       </Box>
