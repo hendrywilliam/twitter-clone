@@ -1,32 +1,60 @@
+import { useRef } from "react";
 import Head from "next/head";
-import {
-  MainLayout,
-  LeftSidebar,
-  RightSidebar,
-  MainContainer,
-  Post,
-} from "@/components";
+import { MainLayout } from "@/components";
+import Image from "next/image";
+import LoginBackground from "../../public/login_background.png";
+import { Flex, Box, Input, Text, Link, Button } from "@chakra-ui/react";
 
 export default function Home() {
+  const email = useRef<HTMLInputElement | null>(null);
+  const password = useRef<HTMLInputElement | null>(null);
+
+  function checkEmail() {}
+
   return (
     <>
       <Head>
-        <title>Beranda / Twitter</title>
+        <title>Welcome to Twitter</title>
         <meta name="description" content="Twitter Clone by @hendrywilliam" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainLayout>
-        <LeftSidebar />
-        <MainContainer>
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-        </MainContainer>
-        <RightSidebar />
+        <Image
+          src={LoginBackground}
+          alt={"background"}
+          className="w-2/3 h-screen object-cover"
+        />
+        <Flex className="w-1/3 h-screen text-white justify-center items-center">
+          <Box className="h-max">
+            <Text className="mb-10 font-bold text-3xl w-96">
+              See what&apos;s happening in the world right now
+            </Text>
+            <Text className="font-bold text-xl">Log in to Twitter</Text>
+            <Input
+              placeholder="Username"
+              ref={email}
+              className="w-full h-10 py-2 px-6 bg-[#14171A] mt-2 rounded-full focus:outline focus:outline-twitterblue"
+            />
+            <Input
+              placeholder="Password"
+              type="password"
+              ref={password}
+              className="w-full h-10 py-2 px-6 bg-[#14171A] mt-2 rounded-full focus:outline focus:outline-twitterblue"
+            />
+            <Flex className="w-full justify-end">
+              <Link href="/home" className="text-twitterblue font-bold">
+                Sign up
+              </Link>
+            </Flex>
+            <Button
+              className="rounded-full bg-twitterblue w-full h-12 font-bold text-white mt-5"
+              onClick={checkEmail}
+            >
+              Login
+            </Button>
+          </Box>
+        </Flex>
       </MainLayout>
     </>
   );

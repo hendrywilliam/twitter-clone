@@ -1,8 +1,8 @@
 import React from "react";
-import { Box, Text, Flex, Button } from "@chakra-ui/react";
+import { Box, Text, Flex, Button, useDisclosure } from "@chakra-ui/react";
 import Image from "next/image";
-import default_profile from "../../../public/default_profile.png";
-import horseImage from "../../../public/horse.png";
+import default_profile from "../../../../public/default_profile.png";
+import horseImage from "../../../../public/horse.png";
 import { FaRegCommentAlt, FaRegHeart } from "react-icons/fa";
 import { AiOutlineRetweet } from "react-icons/ai";
 import { RiBarChartGroupedFill } from "react-icons/ri";
