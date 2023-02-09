@@ -13,13 +13,8 @@ export default function Register() {
   const [errorStatus, setErrorStatus] = useState<AuthError | null>();
   const [successStatus, setSuccessStatus] = useState<boolean>(false);
 
-  const registerUser = async (
-    e: React.FormEvent<HTMLButtonElement>,
-    email: string,
-    password: string
-  ) => {
+  const registerUser = async (email: string, password: string) => {
     try {
-      e.preventDefault();
       let { data, error } = await supabase.auth.signUp({
         email: email,
         password: password,
@@ -94,11 +89,7 @@ export default function Register() {
               className="rounded-full bg-twitterblue w-full h-12 font-bold text-white mt-5"
               onClick={(e) => {
                 if (email.current?.value && password.current?.value) {
-                  registerUser(
-                    e,
-                    email?.current?.value,
-                    password?.current?.value
-                  );
+                  registerUser(email.current.value, password.current.value);
                 }
                 setErrorStatus(null);
                 setSuccessStatus(false);
