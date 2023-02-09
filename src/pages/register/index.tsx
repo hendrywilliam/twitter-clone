@@ -8,8 +8,8 @@ import { supabase } from "@/lib";
 import { AuthError } from "@supabase/supabase-js";
 
 export default function Register() {
-  const email = useRef<HTMLInputElement | null>(null);
-  const password = useRef<HTMLInputElement | null>(null);
+  const email = useRef<HTMLInputElement>(null);
+  const password = useRef<HTMLInputElement>(null);
   const [errorStatus, setErrorStatus] = useState<AuthError | null>();
   const [successStatus, setSuccessStatus] = useState<boolean>(false);
 

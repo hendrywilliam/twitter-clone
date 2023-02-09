@@ -8,9 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "@/lib/redux/features/loginSlice";
 
 export default function Home() {
-  const email = useRef<HTMLInputElement | null>(null);
-  const password = useRef<HTMLInputElement | null>(null);
+  const email = useRef<HTMLInputElement>(null);
+  const password = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
+  const log = useSelector((state) => state.login.userLog);
 
   const handleLogin = (email: string, password: string) => {
     dispatch(loginUser({ email: email, password: password }));
@@ -47,7 +48,7 @@ export default function Home() {
               className="w-full h-10 py-2 px-6 bg-[#14171A] mt-2 rounded-full focus:outline focus:outline-twitterblue"
             />
             <Flex className="w-full justify-end">
-              <Link href="/home" className="text-twitterblue font-bold">
+              <Link href="/register" className="text-twitterblue font-bold">
                 Sign up
               </Link>
             </Flex>
@@ -58,6 +59,9 @@ export default function Home() {
               }
             >
               Login
+            </Button>
+            <Button onClick={() => console.log(log)}>
+              Check your info login
             </Button>
           </Box>
         </Flex>
