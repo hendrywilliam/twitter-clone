@@ -10,7 +10,6 @@ import { loginUser } from "@/lib/redux/features/loginSlice";
 export default function Home() {
   const email = useRef<HTMLInputElement | null>(null);
   const password = useRef<HTMLInputElement | null>(null);
-  const userLog = useSelector((state) => state.login.userLog);
   const dispatch = useDispatch();
 
   const handleLogin = (email: string, password: string) => {
@@ -39,14 +38,12 @@ export default function Home() {
             <Text className="font-bold text-xl">Log in to Twitter</Text>
             <Input
               placeholder="Username"
-              defaultValue={"cintamama@gmail.com"}
               ref={email}
               className="w-full h-10 py-2 px-6 bg-[#14171A] mt-2 rounded-full focus:outline focus:outline-twitterblue"
             />
             <Input
               placeholder="Password"
               ref={password}
-              defaultValue={"cintamama"}
               className="w-full h-10 py-2 px-6 bg-[#14171A] mt-2 rounded-full focus:outline focus:outline-twitterblue"
             />
             <Flex className="w-full justify-end">
