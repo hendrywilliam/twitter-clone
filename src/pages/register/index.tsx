@@ -81,7 +81,7 @@ export default function Register() {
               ) : (
                 <></>
               )}
-              <Link href="/home" className="text-twitterblue font-bold">
+              <Link href="/" className="text-twitterblue font-bold">
                 Sign in
               </Link>
             </Flex>
