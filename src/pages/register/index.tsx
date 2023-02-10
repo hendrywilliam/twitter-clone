@@ -10,14 +10,28 @@ import { AuthError } from "@supabase/supabase-js";
 export default function Register() {
   const email = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
+  const username = useRef<HTMLInputElement>(null);
+  const fullName = useRef<HTMLInputElement>(null);
+
   const [errorStatus, setErrorStatus] = useState<AuthError | null>();
   const [successStatus, setSuccessStatus] = useState<boolean>(false);
 
-  const registerUser = async (email: string, password: string) => {
+  const registerUser = async (
+    email: string,
+    password: string,
+    username: string,
+    fullName: string
+  ) => {
     try {
       let { data, error } = await supabase.auth.signUp({
         email: email,
         password: password,
+        options: {
+          data: {
+            full_name: fullName,
+            username: username,
+          },
+        },
       });
 
       if (data) {
@@ -47,7 +61,7 @@ export default function Register() {
           alt={"background"}
           className="w-2/3 h-screen object-cover z-0"
         />
-        <Flex className="w-1/3 h-screen text-white justify-center items-center z-0">
+        <Flex className="w-1/3 p-10 h-screen text-white justify-center items-center z-0">
           <Box className="h-max">
             <Text className="mb-10 font-bold text-3xl w-96">
               See what&apos;s happening in the world right now.
@@ -64,6 +78,18 @@ export default function Register() {
               placeholder="b3stP4ssW0rd!"
               type="password"
               ref={password}
+              className="w-full h-10 py-2 px-6 bg-[#14171A] mt-2 rounded-full focus:outline focus:outline-twitterblue"
+            />
+            <Input
+              placeholder="Full Name"
+              type="text"
+              ref={fullName}
+              className="w-full h-10 py-2 px-6 bg-[#14171A] mt-2 rounded-full focus:outline focus:outline-twitterblue"
+            />
+            <Input
+              placeholder="@bestusername"
+              type="text"
+              ref={username}
               className="w-full h-10 py-2 px-6 bg-[#14171A] mt-2 rounded-full focus:outline focus:outline-twitterblue"
             />
             <Flex
@@ -87,9 +113,19 @@ export default function Register() {
             </Flex>
             <Button
               className="rounded-full bg-twitterblue w-full h-12 font-bold text-white mt-5"
-              onClick={(e) => {
-                if (email.current?.value && password.current?.value) {
-                  registerUser(email.current.value, password.current.value);
+              onClick={() => {
+                if (
+                  email.current?.value &&
+                  password.current?.value &&
+                  username.current?.value &&
+                  fullName.current?.value
+                ) {
+                  registerUser(
+                    email.current?.value,
+                    password.current?.value,
+                    username.current?.value,
+                    fullName.current?.value
+                  );
                 }
                 setErrorStatus(null);
                 setSuccessStatus(false);
