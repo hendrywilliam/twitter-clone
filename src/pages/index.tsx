@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Head from "next/head";
 import { MainLayout } from "@/components";
 import Image from "next/image";
@@ -6,15 +6,21 @@ import LoginBackground from "../../public/login_background.png";
 import { Flex, Box, Input, Text, Link, Button } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "@/lib/redux/features/loginSlice";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const email = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
   const log = useSelector((state) => state.login.userLog);
+  const router = useRouter();
 
   const handleLogin = (email: string, password: string) => {
     dispatch(loginUser({ email: email, password: password }));
+
+    if (log.session !== null) {
+      router.push("/home");
+    }
   };
 
   return (
@@ -59,9 +65,6 @@ export default function Home() {
               }
             >
               Login
-            </Button>
-            <Button onClick={() => console.log(log)}>
-              Check your info login
             </Button>
           </Box>
         </Flex>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   MainLayout,
   LeftSidebar,
@@ -6,13 +6,30 @@ import {
   MainContainer,
   Post,
 } from "@/components";
+import { Button } from "@chakra-ui/react";
+import { useSelector, useDispatch } from "react-redux";
+import { useRouter } from "next/router";
+import { getSessionUser } from "@/lib/redux/features/getSession";
 
-type Props = {};
+const Home = () => {
+  const log = useSelector((state) => state.login.userLog);
+  const session = useSelector((state) => state.session.userSession);
+  const metadata = log?.user?.user_metadata;
+  const dispatch = useDispatch();
 
-const Home = (props: Props) => {
+  useEffect(() => {
+    (() => {
+      dispatch(getSessionUser());
+    })();
+  }, []);
+
   return (
     <MainLayout>
-      <LeftSidebar />
+      <LeftSidebar
+        avatar={metadata?.avatar_url}
+        fullname={metadata?.full_name}
+        username={metadata?.username}
+      />
       <MainContainer>
         <Post />
         <Post />

@@ -30,6 +30,8 @@ export default function Register() {
           data: {
             full_name: fullName,
             username: username,
+            avatar_url:
+              "https://trpsidwnzkgefmvrmziw.supabase.co/storage/v1/object/public/avatars/default_profile.png",
           },
         },
       });

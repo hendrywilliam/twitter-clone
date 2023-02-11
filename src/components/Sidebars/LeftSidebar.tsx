@@ -7,9 +7,18 @@ import { FiBell } from "react-icons/fi";
 import { AiOutlineUser } from "react-icons/ai";
 import { TbDotsCircleHorizontal } from "react-icons/tb";
 import Image from "next/image";
-import default_profile from "../../../public/default_profile.png";
 
-export const LeftSidebar = () => {
+interface UserProfileProps {
+  avatar: string;
+  fullname: string;
+  username: string;
+}
+
+export const LeftSidebar = ({
+  avatar,
+  fullname,
+  username,
+}: UserProfileProps) => {
   return (
     <Box className="sticky top-0 flex w-1/3 min-h-screen h-screen border-r border-neutral-600 justify-end">
       <Box className="w-1/2 flex flex-col">
@@ -59,14 +68,15 @@ export const LeftSidebar = () => {
           <Flex className="text-white mt-auto px-6 mb-2 gap-3 w-max">
             <Button className="flex gap-2 p-2 rounded-full hover:bg-neutral-800">
               <Image
-                src={default_profile}
+                src={avatar}
                 alt="Default Profile"
                 width={50}
+                height={50}
                 className="rounded-full "
               />
               <Flex className="flex-col pr-2">
-                <p className="font-bold">Hendri William</p>
-                <p className="text-gray-400">@hendrywilliam</p>
+                <p className="font-bold">{fullname}</p>
+                <p className="text-gray-400">{username}</p>
               </Flex>
             </Button>
           </Flex>
